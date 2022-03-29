@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
@@ -23,6 +24,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    @property
+    def age(self):
+        age = None
+        if self.birth_date:
+            today = datetime.datetime.utcnow().date()
+            birth_date_current_year = self.birth_date.replace(year=today.year)
+            age = today.year - self.birth_date.year
+            if today < birth_date_current_year:
+                age -= 1
+        return age
 
     def get_full_name(self):
         return f'{self.name} {self.last_name}'
