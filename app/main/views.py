@@ -25,3 +25,13 @@ class Welcome(APIView):
             'message': 'Welcome to the BEON Python/Django Challenge'
         }
         return Response(response, status=status.HTTP_200_OK)
+
+
+class Home(APIView):
+
+    @method_decorator(anonymous_required(redirect_url='store:products'))
+    def get(self, request):
+        response = {
+            'message': 'Welcome to the home page. Please login or register.'
+        }
+        return Response(response, status=status.HTTP_200_OK)
