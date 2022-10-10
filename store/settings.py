@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'store',
         'USER': 'store',
         'PASSWORD': 'password',
-        'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -120,7 +120,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
